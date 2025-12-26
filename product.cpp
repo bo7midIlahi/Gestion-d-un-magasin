@@ -10,6 +10,22 @@ product::product(int _id, char _nom[15], char _category[15], float _price, int _
     this->quantity = _quantity;
 }
 
+product::product(){
+    this->id = 0;
+    strcpy(this->nom,"");
+    strcpy(this->category,"");
+    this->price = 0;
+    this->quantity = 0;
+}
+
+product::product(const product& other){
+    id = other.id;
+    strcpy(nom,other.nom);
+    strcpy(category,other.category);
+    price = other.price;
+    quantity = other.quantity;
+}
+
 //getters
 int product::get_id(){
     return id;

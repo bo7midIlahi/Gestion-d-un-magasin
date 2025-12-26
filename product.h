@@ -13,7 +13,8 @@ class product {
         int quantity;
     public:
         product(int _id, char _nom[15], char _category[15], float price, int quantity);
-
+        product();
+        product(const product& other);
         //getters
         int get_id();
         char get_nom();
