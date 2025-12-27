@@ -73,7 +73,23 @@ int search_prod(vector<product> productList){
         iterator ++;
     }
     
+    printf("PROD @: %d\n", id_search == iterator->get_id()) ? iterator->get_id() : NULL;
+
     return (id_search == iterator->get_id()) ? iterator->get_id() : NULL;
+}
+
+void affiche_prod(vector<product> productList, int index){
+    if (index == NULL)
+    {
+        printf("NO ELEMENT FOUND!!\n");
+        exit(1);
+    }
+    
+    cout << "ID : " << productList.at(index).get_id();
+    cout << "NOM : " << productList.at(index).get_nom();
+    cout << "CATEGORY : " << productList.at(index).get_category();
+    cout << "PRICE : " << productList.at(index).get_price();
+    cout << "QTE : " << productList.at(index).get_quantity();
 }
 
 int main(){
@@ -87,8 +103,11 @@ int main(){
     switch (action){
         case 3:
             add_product(productList);
+        case 4:
+            remove_prod(productList);
         case 5:
-            search_prod(productList);
+            ;
+            affiche_prod(productList, search_prod(productList));
         case 12:
             printf("QUITTING");
             return 0;
