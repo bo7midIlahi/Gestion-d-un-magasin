@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include "product.h"
 
 using namespace std;
@@ -27,12 +28,71 @@ int get_action() {
         printf("ACTION : ");
         scanf("%d",&result);
     }
-    
+
     return result;
+}
+
+product create_prod(){
+    int id;
+    printf("enter prod id : ");
+    scanf("%d", &id);
+
+    char nom[15];
+    printf("enter prod nom : ");
+    scanf("%s", nom);
+
+    char category[15];
+    printf("enter prod category : ");
+    scanf("%s", category);
+
+    float price;
+    printf("enter prod price : ");
+    scanf("%s", &price);
+
+    int quantity;
+    printf("enter prod qte : ");
+    scanf("%s", &quantity);
+
+    product prod(id,nom,category,price,quantity);
+    return prod;
+}
+
+void add_product(vector<product> productList){
+    product prod = create_prod();
+    productList.push_back(prod);
+}
+
+int search_prod(vector<product> productList){
+    int id_search;
+    printf("enter ID to find: ");
+    scanf("%d", &id_search);
+    
+    auto iterator = productList.begin();
+    
+    while ((iterator != productList.end()) || (id_search != iterator->get_id())) {
+        iterator ++;
+    }
+    
+    return (id_search == iterator->get_id()) ? iterator->get_id() : NULL;
 }
 
 int main(){
     print_menu();
+    
     int action = get_action();
     cout <<"ACTION CHOOSEN : " <<action <<endl;
+    
+    vector<product> productList;
+
+    switch (action){
+        case 3:
+            add_product(productList);
+        case 5:
+            search_prod(productList);
+        case 12:
+            printf("QUITTING");
+            return 0;
+            break;
+
+    }
 }
