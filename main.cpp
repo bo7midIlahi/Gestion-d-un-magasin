@@ -106,7 +106,6 @@ int main(){
         case 4:
             remove_prod(productList);
         case 5:
-            ;
             affiche_prod(productList, search_prod(productList));
         case 12:
             printf("QUITTING");
